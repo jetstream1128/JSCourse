@@ -43,6 +43,32 @@ const restaurant = {
   },
 };
 
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+//Spread operator
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+console.log(...newArr);
+const newMenu = [...restaurant.mainMenu, 'Pirozhki'];
+console.log(newMenu);
+
+//Copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+console.log(mainMenuCopy);
+
+//join 2 arrays
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+
+// Iterables are arrays, strings, maps, sets. Not objects
+const str = 'Jonas';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+console.log(...str);
+
+/* ----------------------------------------------------------
 restaurant.orderDelivery({
   time: '22:30',
   address: 'Dnipro city',
@@ -51,6 +77,7 @@ restaurant.orderDelivery({
 });
 
 restaurant.orderDelivery({ address: 'Kiev', starterIndex: 1 });
+
 
 //Object Destructing
 const { name, openingHours, categories } = restaurant;
@@ -80,6 +107,8 @@ const {
   fri: { open: o, close: c },
 } = openingHours;
 console.log(o, c);
+
+-------------------------------------------------*/
 
 /* ----------------------------------------
 //Destructing arrays
