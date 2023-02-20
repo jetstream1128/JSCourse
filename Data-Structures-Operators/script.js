@@ -45,8 +45,14 @@ const restaurant = {
   orderPasta: function (ing1, ing2, ing3) {
     console.log(`Here is your pasta with ${ing1}, ${ing2}, ${ing2}`);
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
 
+/*#region ------------- Lection 105 ------------
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
 console.log(badNewArr);
@@ -72,8 +78,7 @@ const letters = [...str, ' ', 'S.'];
 console.log(letters);
 console.log(...str);
 
-//#region real world example
-/*
+//real world example
 const ingredients = [
   prompt("Let's make pasta! Ingredient 1?"),
   prompt("Let's make pasta! Ingredient 2?"),
@@ -86,8 +91,6 @@ restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
 
 //ES6 version
 restaurant.orderPasta(...ingredients);
-*/
-//#endregion
 
 //objects
 const newRestaurant = { ...restaurant, founder: 'Daniel', foundedIn: 1998 };
@@ -97,6 +100,45 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = 'Valentinos';
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
+*/
+//#endregion
+
+// 1) Destructuring
+//SPREAD, because on RIGHT side of =
+const arr = [1, 2, ...[3, 4]];
+
+//REST, because on LEFT side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+
+console.log(a, b, others);
+console.log(arr);
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+//objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+//2) Functions
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+};
+
+add(4, 2);
+add(1, 1, 1, 1, 1, 1, 2);
+
+const x = [23, 2, 5];
+add(...x);
+restaurant.orderPizza('mushrooms', 'onions', 'mushrooms');
+restaurant.orderPizza('pineapples');
 
 /* ----------------------------------------------------------
 restaurant.orderDelivery({
