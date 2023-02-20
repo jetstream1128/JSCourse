@@ -41,6 +41,10 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your pasta with ${ing1}, ${ing2}, ${ing2}`);
+  },
 };
 
 const arr = [7, 8, 9];
@@ -67,6 +71,32 @@ const str = 'Jonas';
 const letters = [...str, ' ', 'S.'];
 console.log(letters);
 console.log(...str);
+
+//#region real world example
+/*
+const ingredients = [
+  prompt("Let's make pasta! Ingredient 1?"),
+  prompt("Let's make pasta! Ingredient 2?"),
+  prompt("Let's make pasta! Ingredient 3?"),
+];
+console.log(ingredients);
+
+//old version
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+
+//ES6 version
+restaurant.orderPasta(...ingredients);
+*/
+//#endregion
+
+//objects
+const newRestaurant = { ...restaurant, founder: 'Daniel', foundedIn: 1998 };
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Valentinos';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
 
 /* ----------------------------------------------------------
 restaurant.orderDelivery({
