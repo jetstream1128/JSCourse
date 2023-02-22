@@ -54,6 +54,10 @@ const restaurant = {
 
 //#region  ------------- Lection 107 ------------
 
+//#endregion
+
+//#region  ------------- Lection 107 ------------
+/*
 console.log('---- OR ----');
 console.log(3 || 'Jay');
 console.log('' || 'Jay');
@@ -76,6 +80,7 @@ if (restaurant.orderPizza) {
 }
 
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+*/
 
 //#endregion
 
