@@ -58,6 +58,18 @@ const restaurant = {
 
 //#region  ------------- Lection 107 ------------
 /*
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+//Nullish coalescing operator
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+*/
+//#endregion
+
+//#region  ------------- Lection 107 ------------
+/*
 console.log('---- OR ----');
 console.log(3 || 'Jay');
 console.log('' || 'Jay');
