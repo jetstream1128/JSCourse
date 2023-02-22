@@ -52,6 +52,33 @@ const restaurant = {
   },
 };
 
+//#region  ------------- Lection 107 ------------
+
+console.log('---- OR ----');
+console.log(3 || 'Jay');
+console.log('' || 'Jay');
+console.log(true || 0);
+console.log(undefined || null);
+
+restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log('---- End ----');
+console.log(0 && 'Jay');
+console.log(7 && 'jay');
+console.log('hello' && 26 && null && 6);
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+//#endregion
+
 /*#region ------------- Lection 105 ------------
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
@@ -102,7 +129,7 @@ console.log(restaurantCopy.name);
 console.log(restaurant.name);
 */
 //#endregion
-
+/*
 // 1) Destructuring
 //SPREAD, because on RIGHT side of =
 const arr = [1, 2, ...[3, 4]];
@@ -139,7 +166,7 @@ const x = [23, 2, 5];
 add(...x);
 restaurant.orderPizza('mushrooms', 'onions', 'mushrooms');
 restaurant.orderPizza('pineapples');
-
+*/
 /* ----------------------------------------------------------
 restaurant.orderDelivery({
   time: '22:30',
