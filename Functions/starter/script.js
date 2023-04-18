@@ -1,5 +1,4 @@
 'use strict';
-
 //#region --------Lesson 128 default parameters----------
 
 // const bookings = [];
@@ -87,12 +86,91 @@
 // document.body.addEventListener('click', hight5);
 //#endregion
 
-//#region --------Lesson 131 Functions accepting callback functions----------
+//#region --------Lesson 132 Functions Returning functions----------
 
-const greet = function (greeting) {
-  return function (name) {
-    console.log(`${greeting} ${name}`);
-  };
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
+
+//Challenge
+// const greet = greeting => name => console.log(`${greeting} ${name}`);
+
+// const greeterHey = greet('Hey');
+// greeterHey('Bohdan');
+// greeterHey('Jay');
+
+// greet('Hello')('Jay');
+//#endregion
+
+//#region --------Lesson 133-134 The call and apply Methods, Bind method----------
+
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
 };
 
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const swiss = {
+  airline: 'Swiss AirLines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
+//does not work ---------------!!
+// book(23, 'Dan Boshik');
+
+lufthansa.book(239, 'Bohdan Alieksieiev');
+lufthansa.book(635, 'Jay Jayson');
+
+//call method
+book.call(eurowings, 23, 'Dan Boshik');
+book.call(lufthansa, 255, 'Alex Dev');
+
+book.call(swiss, 65, 'DimonNN');
+book.call(swiss, 256, 'Fedir');
+
+//apply method
+const flightData = [679, 'George Cooper'];
+book.apply(swiss, flightData);
+
+//ES6 method
+book.call(swiss, ...flightData);
+
+//bind method
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(755, 'Jonh Doe');
+bookLX(244, 'Some Name');
+
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('God Man');
+bookEW23('Super Man');
+
+//with event listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  this.planes++;
+};
+
+console.log(eurowings);
+console.log(lufthansa);
+console.log(swiss);
 //#endregion

@@ -1,0 +1,27 @@
+{
+	"name": "javascript",
+	"version": "1.0.0",
+	"description": "��#\u0000 \u0000J\u0000S\u0000C\u0000o\u0000u\u0000r\u0000s\u0000e\u0000\r\u0000 \u0000",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jetstream1128/JSCourse.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/jetstream1128/JSCourse/issues"
+	},
+	"homepage": "https://github.com/jetstream1128/JSCourse#readme",
+	"dependencies": {
+		"exceljs": "^4.3.0"
+	},
+	"devDependencies": {
+		"webpack": "^5.79.0",
+		"webpack-cli": "^5.0.1"
+	}
+}
