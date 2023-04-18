@@ -89,17 +89,17 @@ const game = {
 //1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
 //Solution:
 
-for (const [goal, name] of game.scored.entries()) {
-  console.log(`Goal ${goal + 1}: ${name}`);
-}
+// for (const [goal, name] of game.scored.entries()) {
+//   console.log(`Goal ${goal + 1}: ${name}`);
+// }
 
 // 2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
 //Solution:
-const odds = Object.values(game.odds);
-let a = 0;
-for (const odd of odds) a += odd;
-a /= odds.length;
-console.log(a);
+// const odds = Object.values(game.odds);
+// let a = 0;
+// for (const odd of odds) a += odd;
+// a /= odds.length;
+// console.log(a);
 
 // 3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
 //       Odd of victory Bayern Munich: 1.33
@@ -108,11 +108,11 @@ console.log(a);
 // Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
 
 //Solution:
-const oddTeams = Object.entries(game.odds);
-for (const [team, odd] of oddTeams) {
-  const str = team === 'x' ? 'draw' : `victory ${game[team]}`;
-  console.log(`Odd of ${str}: ${odd}`);
-}
+// const oddTeams = Object.entries(game.odds);
+// for (const [team, odd] of oddTeams) {
+//   const str = team === 'x' ? 'draw' : `victory ${game[team]}`;
+//   console.log(`Odd of ${str}: ${odd}`);
+// }
 
 // BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
 //       {
@@ -121,11 +121,11 @@ for (const [team, odd] of oddTeams) {
 //         Lewandowski: 2
 //       }
 //Solution:
-let scorers = {};
-for (const player of game.scored) {
-  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
-}
-console.log(scorers);
+// let scorers = {};
+// for (const player of game.scored) {
+//   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+// }
+// console.log(scorers);
 
 //for (let i = 0; i < nameScorer.length; i++) console.log(scorers);
 // GOOD LUCK 😀
@@ -161,6 +161,42 @@ Let's continue with our football betting app! This time, we have a map with a lo
 GOOD LUCK 😀
 */
 
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+//1. Create an array 'events' of the different game events that happened (no duplicates)
+//Solution:
+// const events = [...new Set(gameEvents.values())];
+// console.log(events);
+
+//2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+//Solution:
+// gameEvents.delete(64);
+// console.log(gameEvents);
+
+//3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+//Solution:
+// console.log(
+//   `An event happened, on average, every ${90 / gameEvents.size} minutes`
+// );
+
+//4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+// [FIRST HALF] 17: ⚽️ GOAL
+//solution:
+// gameEvents.forEach((v, k) => {
+//   console.log(`${k <= 45 ? '[First' : '[Second'} Half] ${k} : ${v}`);
+// });
+
 ///////////////////////////////////////
 // Coding Challenge #4
 
@@ -192,3 +228,41 @@ Afterwards, test with your own test data!
 
 GOOD LUCK 😀
 */
+// document.body.append(document.createElement('textarea'));
+// document.body.append(document.createElement('button'));
+
+// const button = document.querySelector('button');
+// let text = '';
+
+// const convert = function (string) {
+//   const lines = string.split('\n');
+//   for (const [i, line] of lines.entries()) {
+//     console.log(
+//       line
+//         .toLowerCase()
+//         .trim()
+//         .replace(/(_[a-z])/, line[line.indexOf('_') + 1].toUpperCase())
+//         .padEnd(20) + '✅'.repeat(i + 1)
+//     );
+//   }
+// };
+
+// button.addEventListener('click', () => {
+//   const input = document.querySelector('textarea').value;
+//   convert(input);
+// });
+
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+const flightsSplit = flights.split('+');
+for (const flight of flightsSplit) {
+  const [type, from, to, time] = flight.split(';');
+  const output = `${type.includes('Delayed') ? '🔴' : ''}${type.replaceAll(
+    '_',
+    ' '
+  )} from ${from.replace(/[0-9]/g, '').toUpperCase()} to ${to
+    .replace(/[0-9]/g, '')
+    .toUpperCase()} (${time.replace(':', 'h')})`.padStart(45);
+  console.log(output);
+}
