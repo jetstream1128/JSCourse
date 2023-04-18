@@ -21,5 +21,12 @@
 		"prefix": "cl",
 		"body": ["console.log();"],
 		"description": "Log output to console"
+	},
+
+	"Create a function": {
+		"scope": "javascript,typescript",
+		"prefix": "fun",
+		"body": ["function($1){", "$2", "}"],
+		"description": "Create a function"
 	}
 }
